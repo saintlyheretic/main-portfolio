@@ -19,7 +19,7 @@ const About = () => {
           <div className="about-text animate-on-scroll">
             <h3>Frontend Developer from Johannesburg</h3>
             <p>
-              A 25 year old frontend developer who is based in Enugu, Nigeria and Johannesburg, South Africa. 
+              A 25 year old frontend developer who is based in Johannesburg, South Africa. 
               I am a well-versed and experienced developer who has worked with multiple languages including;
               <br />
               <li>Python</li>
