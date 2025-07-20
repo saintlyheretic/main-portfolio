@@ -1,5 +1,6 @@
 // src/components/Contact.js
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import '../styles/Contact.css';
 
 const Contact = () => {
@@ -18,15 +19,25 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // In a real application, you would send this data to a backend
-    console.log('Form submitted:', formData);
-    
-    // Simulate form submission
-    setFormStatus('success');
-    setTimeout(() => {
-      setFormStatus(null);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+
+    emailjs.sendForm(
+      'service_fpry9ju', // Replace with your EmailJS Service ID
+      'template_ynvqdyc', // Replace with your EmailJS Template ID
+      e.target,
+      'Wqg6loqeVl6PxlTkZ' // Replace with your EmailJS Public/User ID
+    ).then(
+      (result) => {
+        console.log('Success:', result.text);
+        setFormStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setFormStatus(null), 3000);
+      },
+      (error) => {
+        console.error('Error:', error.text);
+        setFormStatus('error');
+        setTimeout(() => setFormStatus(null), 3000);
+      }
+    );
   };
 
   return (
@@ -37,7 +48,7 @@ const Contact = () => {
           <div className="contact-info animate-on-scroll">
             <h3>Contact Information</h3>
             <p>Feel free to reach out to me via any of the following channels:</p>
-            
+
             <div className="contact-item">
               <i className="fas fa-map-marker-alt"></i>
               <div>
@@ -45,7 +56,7 @@ const Contact = () => {
                 <p>Johannesburg, South Africa</p>
               </div>
             </div>
-            
+
             <div className="contact-item">
               <i className="fas fa-envelope"></i>
               <div>
@@ -53,7 +64,7 @@ const Contact = () => {
                 <p>teziokwu14@gmail.com</p>
               </div>
             </div>
-            
+
             <div className="contact-socials">
               <a href="https://wa.me/+27621088360" target="_blank" rel="noreferrer">
                 <i className="fab fa-whatsapp"></i>
@@ -69,7 +80,7 @@ const Contact = () => {
               </a>
             </div>
           </div>
-          
+
           <div className="contact-form animate-on-scroll">
             {formStatus === 'success' && (
               <div className="form-success">
@@ -77,7 +88,13 @@ const Contact = () => {
                 <p>Your message has been sent successfully!</p>
               </div>
             )}
-            
+            {formStatus === 'error' && (
+              <div className="form-error">
+                <i className="fas fa-times-circle"></i>
+                <p>Something went wrong. Please try again.</p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <input 
