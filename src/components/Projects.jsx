@@ -49,6 +49,7 @@ import React from 'react';
 import '../styles/Projects.css';
 import hotelWebsite from '../assets/images/hotelwebsite1.jpg';
 import whatsNearby from '../assets/images/whatsnearby.png';
+import bluesource from '../assets/images/bluesource.jpg';
 
 const Projects = () => {
   const projects = [
@@ -67,6 +68,14 @@ const Projects = () => {
       github: "https://github.com/saintlyheretic/whatsnearby",
       live: "https://whatsnearby.vercel.app/",
       image: whatsNearby
+    },
+    {
+      title: "Bluesource Water",
+      description: "A commercial website for a water solutions company showcasing their products and services. Features a clean, professional design with responsive layout and contact forms.",
+      technologies: ["React", "CSS3", "JavaScript", "HTML5", "Netlify"],
+      github: "https://github.com/saintlyheretic/bluesource-water.git",
+      live: "https://bluesourcewater.co.za/",
+      image: bluesource
     }
   ];
 

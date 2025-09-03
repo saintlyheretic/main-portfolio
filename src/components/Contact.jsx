@@ -7,6 +7,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   });
@@ -29,7 +30,7 @@ const Contact = () => {
       (result) => {
         console.log('Success:', result.text);
         setFormStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
         setTimeout(() => setFormStatus(null), 3000);
       },
       (error) => {
@@ -62,6 +63,14 @@ const Contact = () => {
               <div>
                 <h4>Email</h4>
                 <p>teziokwu14@gmail.com</p>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <i className="fas fa-phone"></i>
+              <div>
+                <h4>Phone</h4>
+                <p>+27 62 108 8360</p>
               </div>
             </div>
 
@@ -114,6 +123,15 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required 
+                />
+              </div>
+              <div className="form-group">
+                <input 
+                  type="tel" 
+                  name="phone" 
+                  placeholder="Phone Number" 
+                  value={formData.phone}
+                  onChange={handleChange}
                 />
               </div>
               <div className="form-group">
